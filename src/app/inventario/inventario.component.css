@@ -163,6 +163,46 @@ section {
   border-radius: 10px;
 }
 
+/* Banner Content */
+.banner {
+  position: relative;
+  text-align: center;
+}
+
+.banner-content {
+  position: absolute;
+  bottom: 20px; /* Position the button closer to the bottom */
+  left: 20px; /* Align the button to the left */
+  transform: none; /* Remove centering transform */
+}
+
+.btn-reservar {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #494848, #e0dedc);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  bottom: 60px;
+  margin-left: 210px;
+}
+
+.btn-reservar:hover {
+  background: linear-gradient(135deg, #f1efee, #423f3e); /* Reverse gradient on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-reservar:active {
+  transform: translateY(1px);
+}
+
 /* Responsivo: las tarjetas se apilan en móviles */
 @media (max-width: 768px) {
   .card-custom {
@@ -292,4 +332,35 @@ section p {
 
 .card-front h5, .card-back h5 {
   margin-bottom: 10px;
+}
+
+/* Slider Section */
+.slider-container {
+  margin-bottom: 2rem;
+}
+
+.carousel-inner img {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive adjustments for the slider */
+@media (max-width: 768px) {
+  .carousel-inner img {
+    height: 250px;
+  }
 }

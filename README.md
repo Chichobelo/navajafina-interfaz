@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # paginadpaintess
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 18.0.4.
@@ -26,3 +27,6 @@ Ejecuta `ng e2e` para pruebas de extremo a extremo en la plataforma de tu elecci
 
 Para más información sobre Angular CLI, usa `ng help` o consulta la [documentación oficial](https://angular.dev/tools/cli).
 git add README.md
+=======
+# navajafina-interfaz
+>>>>>>> 601374310320bc3efc5450d353c8e753bd764299

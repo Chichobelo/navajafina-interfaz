@@ -20,7 +20,7 @@
 }
 
 h1, h2, h3, .subtitle, .form-group label, .summary-row span {
-  color: #000000;
+  color: #fafafa;
 }
 
 h1, h2, h3 {
@@ -47,7 +47,7 @@ h2 {
 h3 {
   font-size: 18px;
   font-weight: 500;
-  color: #000000;
+  color: #ecebeb;
 }
 
 .subtitle {
@@ -91,7 +91,7 @@ h3 {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #ffffff;
+  background: #070707;
   width: 100%; /* Asegurar que las tarjetas ocupen todo el ancho de su celda */
 }
 
@@ -111,7 +111,7 @@ h3 {
 
 .service-card.selected, .professional-card.selected {
   border-color: #000000;
-  background: #f0f0f0;
+  background: #222121;
 }
 
 .service-icon {
@@ -279,97 +279,7 @@ h3 {
   transform: translateY(-2px);
 }
 
-/* Estilos para el sistema de calificaciones */
-.professional-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
 
-.rating {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-.stars {
-  color: #FFD700; /* Color dorado para las estrellas */
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-.rating-value {
-  margin-left: 8px;
-  font-size: 14px;
-  color: #666;
-  font-weight: 500;
-}
-
-.reviews {
-  margin-top: 10px;
-  width: 100%;
-  padding: 0 5px;
-}
-
-.review-item {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-left: 3px solid #000000;
-}
-
-.review-text {
-  font-size: 13px;
-  color: #333;
-  font-style: italic;
-  margin-bottom: 5px;
-  line-height: 1.4;
-}
-
-.review-author {
-  font-size: 12px;
-  color: #666;
-  text-align: right;
-  font-weight: 500;
-}
-
-/* Ajustes para el tamaño de las tarjetas de profesionales */
-.professional-card {
-  height: auto;
-  min-height: 300px;
-}
-
-/* Mejorar la visualización de los avatares */
-.professional-avatar {
-  width: 90px;
-  height: 90px;
-  border: 2px solid #f0f0f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Asegurar que toda la card sea clickeable */
-.professional-card {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.professional-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* Ajustes de espaciado */
-.professional-details h3 {
-  margin-bottom: 5px;
-}
-
-.professional-details p {
-  margin-bottom: 5px;
-}
 
 .confirm-button:disabled {
   background: #cccccc;

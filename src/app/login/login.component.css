@@ -111,7 +111,7 @@ h1 {
 
 /* Botón de inicio de sesión */
 .custom-button {
-    background-color: #5a5958; /* Marrón tierra */
+    background-color: #222121; /* Marrón tierra */
     color: white;
     border: none;
     border-radius: 20px;
@@ -127,7 +127,7 @@ h1 {
 .custom-button:hover {
     transform: translateY(-2px);
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
-    background-color: #bebab6;
+    background-color: #181818;
 }
 
 .custom-button:active {
@@ -137,7 +137,7 @@ h1 {
 
 /* Botón de registro */
 .register-button {
-    background-color: #5a5958;
+    background-color: #1d1d1d;
     color: white;
     border: none;
     border-radius: 20px;

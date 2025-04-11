@@ -14,7 +14,6 @@ export class LeftSidebarComponent {
   changeIsLeftSidebarCollapsed = output<boolean>();
   isUser:string |null =null;
   items = [
-    
     {
       routeLink: 'inventario',
       icon: 'fal fa-home',
@@ -23,21 +22,16 @@ export class LeftSidebarComponent {
     },
     {
       routeLink: 'pages',
-      icon: 'fal fa-file',
+      icon: 'fal fa-calendar-alt', // Updated to a reservation-related icon
       label: 'Reservas',
       user: 'ADMIN',
     },
-
     {
       routeLink: 'logout',
       icon: 'fal fa-sign-out-alt',
       label: 'salir',
       user: '',
     },
-    
-    
-    
-    
   ];
   ngOnInit(){
     this.isUser = localStorage.getItem("role")

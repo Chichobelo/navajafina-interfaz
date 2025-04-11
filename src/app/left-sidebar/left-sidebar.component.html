@@ -7,7 +7,10 @@
       <i class="fal fa-bars"></i>
     </button>
     @if (!isLeftSidebarCollapsed()) {
-      <div class="logo-text">Navaja fina</div>
+      <div class="logo-text">
+        Navaja<br>
+        fina <i class="fal fa-cut" style="margin-left: 5px; font-size: 14px;"></i> <!-- Scissors icon aligned with "fina" -->
+      </div>
       <button class="btn-close" (click)="closeSidenav()">
         <i class="fal fa-times close-icon"></i>
       </button>
