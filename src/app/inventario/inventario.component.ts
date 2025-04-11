@@ -9,7 +9,7 @@ import { DeleteConfirmationModalComponent } from './DeleteConfirmationModal.Comp
 @Component({
   selector: 'app-inventario',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, DeleteConfirmationModalComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, ],
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })

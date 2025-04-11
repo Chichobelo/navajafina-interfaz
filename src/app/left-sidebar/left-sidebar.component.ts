@@ -14,42 +14,20 @@ export class LeftSidebarComponent {
   changeIsLeftSidebarCollapsed = output<boolean>();
   isUser:string |null =null;
   items = [
-    {
-      routeLink: 'products',
-      icon: 'fal fa-box-open',
-      label: 'Productos',
-      user: '',
-    },
+    
     {
       routeLink: 'inventario',
-      icon: 'fal fa-box',
-      label: 'Componentes',
-      user: 'ADMIN',
-    },
-    {
-      routeLink: 'creacion-producto',
-      icon: 'fal fa-cube',
-      label: 'crear producto',
-      user: 'ADMIN',
-    },
-    {
-      routeLink: 'formula',
-      icon: 'fal fa-cube',
-      label: 'crear formula',
+      icon: 'fal fa-home',
+      label: 'inicio',
       user: 'ADMIN',
     },
     {
       routeLink: 'pages',
       icon: 'fal fa-file',
-      label: 'Informe de produccion',
+      label: 'Reservas',
       user: 'ADMIN',
     },
-    {
-      routeLink: 'settings',
-      icon: 'fal fa-cog',
-      label: 'Registro de usuario',
-      user: 'ADMIN',
-    },
+
     {
       routeLink: 'logout',
       icon: 'fal fa-sign-out-alt',

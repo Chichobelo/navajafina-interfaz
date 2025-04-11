@@ -17,22 +17,13 @@ import { AuthResponse } from '../interface/AuthResponse.model';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  isModalVisible: boolean = false;
-  username: string = '';
-  lastname: string = '';
-  firstname: string = '';
-  password: string = '';
-  role: string = '';  
-  errorMessage: string = '';  
-  successMessage: string = '';  
-
   user: RegisterRequest[] = [];
   searchTerm = '';
   showModal = false;
   showDeleteModal = false;
   isEditing = false;
   userToDelete: RegisterRequest | null = null;
-  
+
   currentUser: RegisterRequest = {
     role: Role.USER,
     username: '',
@@ -41,6 +32,9 @@ export class SettingsComponent implements OnInit {
     password: '',
     id: 0
   };
+
+  errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(private authService: AuthService) {}
 
@@ -83,9 +77,7 @@ export class SettingsComponent implements OnInit {
 
   editUser(user: RegisterRequest) {
     this.isEditing = true;
-    this.currentUser = { ...user };
-    this.currentUser.password = "";
-    this.role = this.currentUser.role === Role.ADMIN ? "admin" : "user";
+    this.currentUser = { ...user, password: '' };
     this.showModal = true;
   }
 
@@ -104,7 +96,6 @@ export class SettingsComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error deleting worker', error);
-          // Opcional: Agregar manejo de errores aquí
         }
       });
     }
@@ -119,24 +110,31 @@ export class SettingsComponent implements OnInit {
     this.showModal = false;
   }
 
-  closeCreateModal(): void {
-    this.showModal = false;
-  }
-
   register(): void {
+    if (
+      !this.currentUser.username ||
+      !this.currentUser.firstname ||
+      !this.currentUser.lastname ||
+      !this.currentUser.role
+    ) {
+      this.errorMessage = 'Por favor, complete todos los campos obligatorios.';
+      return;
+    }
+
     const newUser: RegisterRequest = {
+      id: this.currentUser.id || 0,
       username: this.currentUser.username,
       lastname: this.currentUser.lastname,
       firstname: this.currentUser.firstname,
-      password: this.currentUser.password,
-      role: this.role === "admin" ? Role.ADMIN : Role.USER
+      password: this.currentUser.password || '',
+      role: this.currentUser.role
     };
-    
+
     this.authService.register(newUser).subscribe({
       next: (response: AuthResponse) => {
         this.successMessage = 'Usuario registrado con éxito.';
-        this.closeCreateModal();
         this.loadUsers();
+        setTimeout(() => this.closeModal(), 300);
       },
       error: (err) => {
         this.errorMessage = 'Error al registrar el usuario. Intenta nuevamente.';

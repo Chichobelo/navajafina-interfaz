@@ -1,179 +1,49 @@
-<div class="container inventory-management">
-  <div class="inventory-header">
-    <h1>Lista de componentes</h1>
-  </div>
-  <div class="search-container">
-    <div class="search-input-container">
-      <input
-        type="text"
-        [(ngModel)]="searchTerm"
-        (input)="filterData()"
-        placeholder="Buscar por nombre..."
-        class="search-input"
-      />
-    </div>
-    <button class="btn-new-component" (click)="openCreateModal()"> + Crear nuevo componente</button>
-  </div>
-
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre del Químico</th>
-          <th>Stock Actual</th>
-          <th>Unidad</th>
-          <th>Stock Mínimo</th>
-          <th>Estado</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="acciones" *ngFor="let item of paginatedComponents">
-          <td>{{ item.name }}</td>
-          <td>{{ item.currentStock }}</td>
-          <td>{{ item.unitOfMeasurement }}</td>
-          <td>{{ item.minimumStock }}</td>
-          <td class="status">
-            <span [ngClass]="getStatusColor(getStockStatus(item.currentStock, item.minimumStock))">
-              {{ getStockStatus(item.currentStock, item.minimumStock) | titlecase }}
-            </span>
-          </td>
-          <td>
-            <i 
-            class="fas fa-edit" 
-            (click)="editStock(item)" 
-            style="cursor: pointer; margin-right: 20px; color: #2162a7;">
-          </i>
-          <i 
-            class="fas fa-trash-alt" 
-            (click)="deleteStockProduct(item)" 
-            style="cursor: pointer; color: #2162a7;">
-          </i>
-          
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container text-center mt-5">
+  <!-- Sección de Banner -->
+  <section class="banner">
+    <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*b_PBtEgFT5U68J91lkUIug.jpeg" alt="Banner principal" class="banner-img">
+  </section>
+  
+  <!-- Sección de Características -->
+  <section class="mt-5">
+    <h2 class="fw-bold">Características Principales</h2>
+    <p>Nuestra plataforma está diseñada para hacer la gestión de citas más eficiente tanto para clientes como para profesionales.</p>
     
-    <div class="pagination-container mt-3" *ngIf="totalPages > 1">
-      <button class="btn-eliminar" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
-        Anterior
-      </button>
-      <button class="btn-eliminar" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
-        Siguiente
-      </button>
-    </div>
-  </div>
-
-  <!-- Modal para editar un químico -->
-  <div *ngIf="selectedItem.name!== ''" class="modal">
-    <div class="modal-content">
-      <h2>Actualizar Inventario</h2>
-      <div class="form-group">
-        <label for="edit-name">Nombre del Componente</label>
-        <input
-          type="text"
-          [(ngModel)]="selectedItem.name"
-          id="edit-name"
-          placeholder="Ejemplo: T1"
-        />
+    <div class="row justify-content-center g-4 mt-4">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+        <div class="card-custom">
+          <img src="https://cdn-icons-png.flaticon.com/512/55/55281.png" alt="Icono calendario" width="60" height="60" class="mb-3" style="filter: brightness(0) invert(1);" />
+          <h5>Reserva Online</h5>
+          <p>Agenda tu cita desde cualquier lugar con solo unos clics.</p>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="edit-unit">Unidad</label>
-        <select
-          id="edit-unit"
-          [(ngModel)]="selectedItem.unitOfMeasurement"
-          class="form-control"
-        >
-          <option value="" disabled selected>Selecciona una unidad</option>
-          <option value="KG">Kilogramos </option>
-          <option value="LIT">Litros</option>
-          <option value="GR">Gramos</option>
-          <option value="MG">Miligramos</option>
-        </select>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+        <div class="card-custom">
+          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Icono usuario" width="60" height="60" class="mb-3" style="filter: brightness(0) invert(1);" />
+          <h5>Elige tu Profesional</h5>
+          <p>Selecciona el barbero que mejor se adapte a tus necesidades.</p>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="edit-stock">Stock Actual</label>
-        <input
-          type="number"
-          [(ngModel)]="selectedItem.currentStock"
-          id="edit-stock"
-          placeholder="Ejemplo: 100"
-        />
-      </div>
-      <div class="form-group">
-        <label for="edit-minStock">Stock Mínimo</label>
-        <input
-          type="number"
-          [(ngModel)]="selectedItem.minimumStock"
-          id="edit-minStock"
-          placeholder="Ejemplo: 10"
-        />
-      </div>
-      <div class="form-actions">
-        <button class="btn-save" (click)="updateStockProduct()">Guardar</button>
-        <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+        <div class="card-custom">
+          <img src="https://cdn-icons-png.flaticon.com/512/3114/3114812.png" alt="Icono reloj" width="60" height="60" class="mb-3" style="filter: brightness(0) invert(1);" />
+          <h5>Recordatorios</h5>
+          <p>Recibe notificaciones para no olvidar tu cita.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Modal para crear un nuevo químico -->
-  <div *ngIf="showCreateModal" class="modal">
-    <div class="modal-content">
-      <h2>Crear Químico</h2>
-      <div class="form-group">
-        <label for="new-name">Nombre del componente</label>
-        <input
-          type="text"
-          id="new-name"
-          [(ngModel)]="stock.name"
-          placeholder="Ejemplo: R6"
-        />
-      </div>
-      <div class="form-group">
-        <label for="new-unit">Unidad</label>
-        <select
-          id="new-unit"
-          [(ngModel)]="stock.unitOfMeasurement"
-          class="form-control"
-        >
-          <option value="" disabled selected>Selecciona una unidad</option>
-          <option value="Kg">Kilogramos</option>
-          <option value="Li">Litros </option>
-          <option value="Gr">Gramos </option>
-          <option value="MG">Miligramos </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="new-stock">Stock Actual</label>
-        <input
-          type="number"
-          id="new-stock"
-          [(ngModel)]="stock.currentStock"
-          placeholder="Ejemplo: 150"
-        />
-      </div>
-      <div class="form-group">
-        <label for="new-minStock">Stock Mínimo</label>
-        <input
-          type="number"
-          id="new-minStock"
-          [(ngModel)]="stock.minimumStock"
-          placeholder="Ejemplo: 50"
-        />
-      </div>
-      <div class="form-actions">
-        <button class="btn-save" (click)="saveStockProduct()">Guardar</button>
-        <button class="btn-cancel" (click)="closeCreateModal()">Cancelar</button>
+  <!-- Sección de Ubicación -->
+  <section class="ubicacion mt-5">
+    <div class="ubicacion-container">
+      <h2 class="fw-bold">Nuestra Ubicación</h2>
+      <p>Visítanos en nuestro local y disfruta de un servicio de primera calidad.</p>
+      <div class="mapa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3745.573118994931!2d-74.17898134992268!3d11.220777742950903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef4f5d752c03441%3A0x5685e5cfa56f5dff!2sPortal%20De%20Las%20Avenidas!5e0!3m2!1ses!2sco!4v1743777914634!5m2!1ses!2sco"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </div>
-  </div>
-
-  <!-- Modal de confirmación de eliminación -->
-  <app-delete-confirmation-modal
-    [show]="showDeleteModal"
-    [itemName]="itemToDelete?.name"
-    (confirm)="confirmDelete()"
-    (cancel)="cancelDelete()">
-  </app-delete-confirmation-modal>
+  </section>
 </div>
