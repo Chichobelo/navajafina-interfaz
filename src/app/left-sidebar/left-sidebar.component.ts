@@ -27,6 +27,12 @@ export class LeftSidebarComponent {
       user: 'ADMIN',
     },
     {
+      routeLink: 'settings',
+      icon: 'fal fa-user-plus',
+      label: 'crear usuario',
+      user: 'ADMIN',
+    },
+    {
       routeLink: 'logout',
       icon: 'fal fa-sign-out-alt',
       label: 'salir',

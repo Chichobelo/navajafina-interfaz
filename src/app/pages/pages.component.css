@@ -29,6 +29,7 @@ h1, h2, h3 {
 
 .subtitle, .form-group label, .summary-row span, .service-details p, .professional-details p, .rating-value {
   color: #666;
+  
 }
 
 h1 {
@@ -87,7 +88,6 @@ h3 {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border: 1px solid #e0e0e0;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -111,7 +111,7 @@ h3 {
 
 .service-card.selected, .professional-card.selected {
   border-color: #000000;
-  background: #222121;
+  background: #c7c9c7;
 }
 
 .service-icon {

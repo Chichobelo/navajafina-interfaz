@@ -43,8 +43,88 @@ header p {
 /* Sección de Características */
 section {
   text-align: center;
-  padding: 50px 20px;
+  
 }
+
+/* Estilo general */
+.gallery {
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  color: #0f0f0f;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de la galería */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajustamos el tamaño de las columnas */
+  gap: 15px; /* Reducimos el espacio entre las tarjetas */
+  justify-items: center;
+}
+
+/* Estilo de cada item de la galería */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; /* Menor radio para un look más compacto */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; /* Menor radio para las imágenes */
+  transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el ratón */
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-item .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6); /* Fondo un poco más oscuro */
+  color: #fff;
+  padding: 12px; /* Menos padding */
+  text-align: left;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  border-bottom-left-radius: 10px; /* Menor radio */
+  border-bottom-right-radius: 10px; /* Menor radio */
+}
+
+.gallery-item:hover .info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilo del título y descripción */
+.gallery-item .info h3 {
+  font-size: 1.1rem; /* Reducimos el tamaño del título */
+  margin-bottom: 6px;
+}
+
+.gallery-item .info p {
+  font-size: 0.9rem;
+  color: #e0dedc; /* Reducimos el tamaño del texto */
+}
+
 
 .row {
   display: flex;
