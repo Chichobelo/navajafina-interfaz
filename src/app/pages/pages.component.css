@@ -250,6 +250,55 @@ h3 {
   border-bottom: none;
 }
 
+.service-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card.selected {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.05);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.selected-service {
+  margin-bottom: 5px;
+}
+
+.total-row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.submit-button {
+  background-color: #333333; /* Rosa vibrante */
+  color: #fff; /* Texto blanco */
+  padding: 12px 24px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de texto */
+  font-weight: bold; /* Texto en negrita */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Apunta a mano */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animación */
+}
+
+.submit-button:hover {
+  background-color: #817e7f; /* Color más oscuro al pasar el mouse */
+  transform: translateY(-3px); /* Desplazar ligeramente hacia arriba */
+}
+
+.submit-button:active {
+  transform: translateY(1px); /* Efecto de presionar el botón */
+}
+
+
 .summary-row span:first-child {
   color: #7f8c8d;
 }

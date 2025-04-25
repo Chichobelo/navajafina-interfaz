@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PackingService } from '../services/Packing.service';
-import { Packing } from '../interface/Packing.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+interface Service {
+  name: string;
+  price: number;
+  duration: number;
+}
 
 @Component({
   selector: 'app-pages',
@@ -12,11 +16,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./pages.component.css'],
 })
 export class PagesComponent implements OnInit {
-  // Servicios
-  selectedServiceId: string | null = null;
-  selectedServiceName: string | null = null;
-  selectedServicePrice: number | null = null;
-  selectedServiceDuration: number | null = null;
+  // Servicios - cambiamos para manejar múltiples selecciones
+  selectedServices: Service[] = [];
   
   // Profesionales
   selectedProfessionalId: string | null = null;
@@ -74,27 +75,57 @@ export class PagesComponent implements OnInit {
     }
   }
 
-  // Seleccionar servicio
+  // Seleccionar servicio - Modificada para selección múltiple
   selectService(name: string, price: number, duration: number, nextStepId: string): void {
-    this.selectedServiceName = name;
-    this.selectedServicePrice = price;
-    this.selectedServiceDuration = duration;
-    this.scrollTo(nextStepId);
+    console.log(`Intentando seleccionar servicio: ${name}`); // Debugging
     
-    // Remover clase selected de todas las tarjetas de servicio
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.classList.remove('selected');
-    });
+    // Revisamos si el servicio ya está seleccionado
+    const existingServiceIndex = this.selectedServices.findIndex(s => s.name === name);
     
-    // Añadir clase selected a la tarjeta seleccionada
-    const serviceCards = document.querySelectorAll('.service-card');
-    for (let i = 0; i < serviceCards.length; i++) {
-      const cardTitle = serviceCards[i].querySelector('h3')?.textContent;
-      if (cardTitle === name) {
-        serviceCards[i].classList.add('selected');
-        break;
-      }
+    if (existingServiceIndex >= 0) {
+      // Si ya está seleccionado, lo removemos
+      this.selectedServices.splice(existingServiceIndex, 1);
+      console.log(`Removido servicio: ${name}`);
+    } else {
+      // Si no está seleccionado, lo agregamos
+      this.selectedServices.push({ name, price, duration });
+      console.log(`Agregado servicio: ${name}`);
     }
+
+    // Solo avanzamos al siguiente paso si hay al menos un servicio seleccionado
+    if (this.selectedServices.length > 0 && this.selectedServices.length === 1) {
+      // Solo avanzamos automáticamente en la primera selección
+      this.scrollTo(nextStepId);
+    }
+
+    // Actualizamos la clase 'selected' en todas las tarjetas de servicio
+    this.updateServiceCardSelection();
+  }
+  
+  // Método auxiliar para actualizar la selección visual
+  updateServiceCardSelection(): void {
+    // Obtenemos todas las tarjetas de servicio
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    // Para cada tarjeta, verificamos si su servicio está en la lista de seleccionados
+    serviceCards.forEach(card => {
+      const cardTitle = card.querySelector('h3')?.textContent?.trim();
+      
+      // Si el servicio está seleccionado, agregamos la clase, si no, la removemos
+      if (cardTitle && this.isServiceSelected(cardTitle)) {
+        card.classList.add('selected');
+      } else {
+        card.classList.remove('selected');
+      }
+    });
+  }
+  
+  // Método para comprobar si un servicio está seleccionado - ignora acentos y es case insensitive
+  isServiceSelected(name: string): boolean {
+    const normalizedName = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return this.selectedServices.some(s => 
+      s.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === normalizedName
+    );
   }
   
   // Seleccionar profesional
@@ -124,14 +155,24 @@ export class PagesComponent implements OnInit {
     return (price / 1000).toFixed(3).replace('.', ',');
   }
   
+  // Calcular total del precio
+  getTotalPrice(): number {
+    return this.selectedServices.reduce((total, service) => total + service.price, 0);
+  }
+  
+  // Calcular duración total
+  getTotalDuration(): number {
+    return this.selectedServices.reduce((total, service) => total + service.duration, 0);
+  }
+  
   // Verificar si el formulario es válido
   isFormValid(): boolean {
     return !!(
-      this.selectedServiceName && 
+      this.selectedServices.length > 0 && 
       this.selectedProfessionalName && 
       this.selectedDate && 
       this.selectedTime &&
-      this.selectedPaymentMethod // Ensure payment method is selected
+      this.selectedPaymentMethod
     );
   }
   
@@ -140,13 +181,13 @@ export class PagesComponent implements OnInit {
     if (this.isFormValid()) {
       // Aquí podrías enviar los datos al servidor o realizar alguna acción
       const bookingData = {
-        service: this.selectedServiceName,
+        services: this.selectedServices,
         professional: this.selectedProfessionalName,
         date: this.selectedDate,
         time: this.selectedTime,
-        paymentMethod: this.selectedPaymentMethod, // Include payment method
-        price: this.selectedServicePrice,
-        duration: this.selectedServiceDuration
+        paymentMethod: this.selectedPaymentMethod,
+        totalPrice: this.getTotalPrice(),
+        totalDuration: this.getTotalDuration()
       };
       
       console.log('Reserva confirmada:', bookingData);
@@ -159,14 +200,12 @@ export class PagesComponent implements OnInit {
   
   // Reiniciar formulario
   resetForm(): void {
-    this.selectedServiceName = null;
-    this.selectedServicePrice = null;
-    this.selectedServiceDuration = null;
+    this.selectedServices = [];
     this.selectedProfessionalName = null;
     this.selectedProfessionalRole = null;
     this.selectedDate = null;
     this.selectedTime = null;
-    this.selectedPaymentMethod = null; // Reset payment method
+    this.selectedPaymentMethod = null;
     
     // Remover clase selected de todas las tarjetas
     document.querySelectorAll('.service-card, .professional-card').forEach(card => {

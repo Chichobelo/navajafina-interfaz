@@ -27,6 +27,12 @@ export class LeftSidebarComponent {
       user: 'ADMIN',
     },
     {
+      routeLink: 'formula',
+      icon: 'fal fa-user-plus',
+      label: 'Mis reservas',
+      user: 'ADMIN',
+    },
+    {
       routeLink: 'settings',
       icon: 'fal fa-user-plus',
       label: 'crear usuario',

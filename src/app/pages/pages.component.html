@@ -1,5 +1,5 @@
 <div class="booking-container">
-  <!-- Step 1: Select a Service -->
+  <!-- Paso 1: Selecciona un Servicio -->
   <div class="booking-step" id="step-1">
     <h2>Paso 1: Selecciona un Servicio</h2>
     <p class="subtitle">Elige el tipo de servicio que deseas reservar</p>
@@ -8,38 +8,42 @@
         <img src="https://i.pinimg.com/736x/d0/fa/03/d0fa0355f62c9dfc7f64f19efca9870e.jpg" alt="Corte de Cabello">
         <div class="service-details">
           <h3>Corte de Cabello</h3>
-          <p>${{formatPrice(15000)}} · 30 min</p>
+          <p>${{ formatPrice(15000) }} · 30 min</p>
         </div>
       </div>
+
       <div class="service-card" (click)="selectService('Afeitado Clásico', 12000, 25, 'step-2')">
         <img src="https://i.pinimg.com/736x/38/71/4a/38714a9700ac21256997fb86a4e5193e.jpg" alt="Afeitado Clásico">
         <div class="service-details">
           <h3>Afeitado Clásico</h3>
-          <p>${{formatPrice(12000)}} · 25 min</p>
+          <p>${{ formatPrice(12000) }} · 25 min</p>
         </div>
       </div>
-      <div class="service-card" (click)="selectService('Corte y Barba', 25000, 50, 'step-2')">
-        <img src="https://i.pinimg.com/736x/2e/10/4a/2e104a2043b4903da22ba4381c31cc14.jpg" alt="Corte y Barba">
+
+       <!-- Revisa la tarjeta de coloración en el HTML -->
+<div class="service-card" (click)="selectService('Coloracion', 100000, 60, 'step-2')">
+  <img src="https://i.pinimg.com/736x/2e/10/4a/2e104a2043b4903da22ba4381c31cc14.jpg" alt="Coloración">
+  <div class="service-details">
+    <h3>Coloración</h3>
+    <p>${{ formatPrice(100000) }} · 1 hora</p>
+  </div>
+</div>
+
+      <div class="service-card" (click)="selectService('Peinado o Definición', 80000, 50, 'step-2')">
+        <img src="https://i.pinimg.com/736x/66/96/ae/6696aef09abc4265e01dfe227fd0de4e.jpg" alt="Peinado o Definición">
         <div class="service-details">
-          <h3>Coloracion</h3>
-          <p>${{formatPrice(100000)}} 1 hora</p>
-        </div>
-      </div>
-      <div class="service-card" (click)="selectService('Peinado', 10000, 20, 'step-2')">
-        <img src="https://i.pinimg.com/736x/66/96/ae/6696aef09abc4265e01dfe227fd0de4e.jpg" alt="Peinado">
-        <div class="service-details">
-          <h3>Peinado o definicion</h3>
-          <p>${{formatPrice(80000)}} 50 min </p>
+          <h3>Peinado o Definición</h3>
+          <p>${{ formatPrice(80000) }} · 50 min</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Paso 2: Selecciona un Profesional -->
   <div class="booking-step" id="step-2">
     <h2>Paso 2: Selecciona un Profesional</h2>
     <p class="subtitle">Elige el profesional con quien deseas agendar</p>
     <div class="professionals-grid">
-      <!-- Carlos Rodríguez -->
       <div class="professional-card" (click)="selectProfessional('Carlos Rodríguez', 'Barbero Senior', 'step-3')">
         <div class="professional-avatar">
           <img src="https://i.pinimg.com/736x/5d/be/29/5dbe295cdd51334ec8a10bde687ce08d.jpg" alt="Carlos Rodríguez">
@@ -49,18 +53,17 @@
           <p>Barbero Senior</p>
           <div class="rating">
             <div class="stars">★★★★★</div>
-            <span class="rating-value">4.9 (99)</span>
+            <span class="rating-value">4.9</span>
           </div>
           <div class="reviews">
-            <div class="review-item">
-              <p class="review-text">"Excelente corte, muy profesional y puntual. Lo recomiendo."</p>
-              <p class="review-author">- Miguel A.</p>
-            </div>
+            <p class="review-text">
+              Con más de 12 años en la industria, Carlos ha trabajado en barberías de renombre en Bogotá y Medellín. Es especialista en cortes clásicos y modernos, afeitados al ras y cuidado de barba.
+            </p>
+            <p class="review-author">-Especialista en cortes-</p>
           </div>
         </div>
       </div>
-      
-      <!-- María González -->
+
       <div class="professional-card" (click)="selectProfessional('María González', 'Estilista', 'step-3')">
         <div class="professional-avatar">
           <img src="https://i.pinimg.com/736x/30/29/3b/30293b9432848b86aeb3e0175e796656.jpg" alt="María González">
@@ -70,18 +73,17 @@
           <p>Estilista</p>
           <div class="rating">
             <div class="stars">★★★★☆</div>
-            <span class="rating-value">4.7 (98)</span>
+            <span class="rating-value">4.7</span>
           </div>
           <div class="reviews">
-            <div class="review-item">
-              <p class="review-text">"María tiene un gran sentido del estilo, quedé muy satisfecho."</p>
-              <p class="review-author">- Camilo T.</p>
-            </div>
+            <p class="review-text">
+              Con más de 8 años de experiencia, se especializa en estilismo, peinados para eventos y asesoría de imagen.
+            </p>
+            <p class="review-author">-Especialista en color y peinados-</p>
           </div>
         </div>
       </div>
-      
-      <!-- Juan Pérez -->
+
       <div class="professional-card" (click)="selectProfessional('Juan Pérez', 'Colorista', 'step-3')">
         <div class="professional-avatar">
           <img src="https://i.pinimg.com/736x/d9/cc/15/d9cc154e1f7e584ccb1a0274f67741cd.jpg" alt="Juan Pérez">
@@ -91,18 +93,17 @@
           <p>Colorista</p>
           <div class="rating">
             <div class="stars">★★★★★</div>
-            <span class="rating-value">5.0 (76)</span>
+            <span class="rating-value">5.0</span>
           </div>
           <div class="reviews">
-            <div class="review-item">
-              <p class="review-text">"El mejor colorista de la ciudad. Resultados perfectos."</p>
-              <p class="review-author">- Carolina M.</p>
-            </div>
+            <p class="review-text">
+              Juan es experto en coloración avanzada, con formación en academias de belleza en Barcelona y Buenos Aires.
+            </p>
+            <p class="review-author">-Especialista en corte y definición-</p>
           </div>
         </div>
       </div>
-      
-      <!-- Jake Smith -->
+
       <div class="professional-card" (click)="selectProfessional('Jake Smith', 'Barbero', 'step-3')">
         <div class="professional-avatar">
           <img src="https://i.pinimg.com/736x/15/57/7d/15577d3abe871f3370836d0e2e63e6bd.jpg" alt="Jake Smith">
@@ -112,35 +113,37 @@
           <p>Barbero</p>
           <div class="rating">
             <div class="stars">★★★★☆</div>
-            <span class="rating-value">4.2 (54)</span>
+            <span class="rating-value">4.2</span>
           </div>
           <div class="reviews">
-            <div class="review-item">
-              <p class="review-text">"Jake tiene mucha experiencia con estilos modernos. Muy recomendado."</p>
-              <p class="review-author">- Daniel R.</p>
-            </div>
+            <p class="review-text">
+              Jake se formó en técnicas de barbería urbana y diseño de líneas. Tiene 6 años de experiencia, destacándose por su habilidad para fusionar estilos modernos con técnicas tradicionales.
+            </p>
+            <p class="review-author">-Especialista en color-</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
-  <!-- Step 3: Confirm Reservation -->
+  <!-- Paso 3: Confirmar Reserva -->
   <div class="booking-step" id="step-3">
     <h2>Paso 3: Confirma tu Reserva</h2>
     <p class="subtitle">Completa los detalles de tu cita</p>
+
     <div class="form-group">
       <label for="date">Fecha</label>
       <input type="date" id="date" [(ngModel)]="selectedDate" class="date-input" (change)="scrollTo('step-4')">
     </div>
+
     <div class="form-group">
       <label for="time">Hora</label>
       <select id="time" [(ngModel)]="selectedTime" class="time-select" (change)="scrollTo('step-4')">
         <option value="" disabled selected>Seleccionar hora</option>
-        <option *ngFor="let time of availableTimes" [value]="time">{{time}}</option>
+        <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
       </select>
     </div>
+
     <div class="form-group payment-methods">
       <label for="payment">Método de Pago</label>
       <select id="payment" [(ngModel)]="selectedPaymentMethod">
@@ -150,37 +153,36 @@
         <option value="transferencia">Transferencia Bancaria</option>
       </select>
     </div>
-    <div class="summary-section">
-      <h3>Resumen</h3>
-      <div class="summary-row">
-        <span>Servicio:</span>
-        <span>{{selectedServiceName || '-'}}</span>
+
+    <!-- Reemplaza la sección de resumen en el paso 3 -->
+<div class="summary-section">
+  <h3>Resumen</h3>
+  <div class="summary-row">
+    <span>Servicios:</span>
+    <div *ngIf="selectedServices.length > 0">
+      <div *ngFor="let service of selectedServices" class="selected-service">
+        <span>{{ service.name }} - ${{ formatPrice(service.price) }}</span>
       </div>
-      <div class="summary-row">
-        <span>Profesional:</span>
-        <span>{{selectedProfessionalName || '-'}}</span>
-      </div>
-      <div class="summary-row">
-        <span>Fecha:</span>
-        <span>{{selectedDate ? (selectedDate | date:'dd/MM/yyyy') : '-'}}</span>
-      </div>
-      <div class="summary-row">
-        <span>Hora:</span>
-        <span>{{selectedTime || '-'}}</span>
-      </div>
-      <div class="summary-row">
-        <span>Método de Pago:</span>
-        <span>{{selectedPaymentMethod || '-'}}</span>
+      <div class="total-row">
+        <strong>Total: ${{ formatPrice(getTotalPrice()) }} · {{ getTotalDuration() }} min</strong>
       </div>
     </div>
+    <span *ngIf="selectedServices.length === 0">-</span>
   </div>
+  <div class="summary-row">
+    <span>Profesional:</span>
+    <span>{{ selectedProfessionalName || '-' }}</span>
+  </div>
+  <div class="summary-row">
+    <span>Fecha y Hora:</span>
+    <span>{{ selectedDate || '-' }} - {{ selectedTime || '-' }}</span>
+  </div>
+  <div class="summary-row">
+    <span>Método de Pago:</span>
+    <span>{{ selectedPaymentMethod || '-' }}</span>
+  </div>
+</div>
 
-  <!-- Step 4: Make the Reservation -->
-  <div class="booking-step" id="step-4">
-    <h2>Paso 4: Hacer la Reserva</h2>
-    <p class="subtitle">Revisa los detalles y confirma tu reserva</p>
-    <button class="confirm-button" [disabled]="!isFormValid()" (click)="confirmBooking()">
-      Confirmar Reserva
-    </button>
+    <button class="submit-button" (click)="confirmBooking()">Confirmar Reserva</button>
   </div>
 </div>

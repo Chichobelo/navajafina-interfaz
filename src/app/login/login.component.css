@@ -1,16 +1,16 @@
-/* Estilo general del host */
+
 :host {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la ventana */
-    width: 100vw; /* Ocupa todo el ancho de la ventana */
-    background-color: #6e6d6c; /* Fondo beige claro */
+    height: 100vh; 
+    width: 100vw; 
+    background-color: #6e6d6c; 
 }
 
 .alert-danger {
     color: #721c24;
-    background-color: #fbeae5; /* Fondo tierra claro */
+    background-color: #fbeae5; 
     border-color: #f5b7a9;
     padding: 10px;
     margin-bottom: 15px;
@@ -22,7 +22,7 @@
     font-size: 20px;
 }
 
-/* Contenedor principal del formulario */
+
 .login-container {
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@
     padding: 20px;
 }
 
-/* Panel izquierdo (imagen) */
+
 .left-panel {
     flex: 1;
     display: flex;
@@ -55,22 +55,22 @@
     border-radius: 10px;
 }
 
-/* Panel derecho (formulario) */
+
 .right-panel {
     flex: 1;
     padding: 30px;
     text-align: left;
 }
 
-/* Estilos del título */
+
 h1 {
     margin-bottom: 20px;
-    font-size: 30px; /* Reducido para mejor proporción */
+    font-size: 30px; 
     color: #000000;
     text-align: center;
 }
 
-/* Organización de los campos */
+
 .form-label {
     display: block;
     font-weight: bold;
